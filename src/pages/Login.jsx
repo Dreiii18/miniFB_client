@@ -48,7 +48,6 @@ function Login() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-md-5 mt-md-4 pb-5">
                                             <h2 className="fw-bold mb-2 text-uppercase mb-5">Login</h2>
-                                            <p className="text-white-50 mb-5">Please enter your username and password!</p>
                                             {invalidLogin && (
                                                 <p id="invalid" style={{display: invalidLogin ? 'block' : 'none'}}>Invalid username or password</p>
                                             )}
