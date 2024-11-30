@@ -31,8 +31,8 @@ function LeftPanel() {
 
     return (
         <div>
-            {data.map( (item) => (
-                <ImageLayout image={item.image} text={item.text} />
+            {data.map( (item, key) => (
+                <ImageLayout key={key} image={item.image} text={item.text} />
             ))}
         </div>
     )
