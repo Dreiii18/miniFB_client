@@ -9,7 +9,7 @@ function PostContainer({ posts }) {
     }
 
     return (
-        <div>
+        <div className='mb-4'>
             {posts.map((post) => (
                 <Post 
                     key={post.post_ID}
