@@ -1,5 +1,5 @@
 .mainpage_container {
-    height: 100vh;
+    height: calc(100vh - 52px);
     background-color: #EFF2F5;
     padding-top: 16px;
 }
@@ -13,6 +13,6 @@
     margin-left: 50px !important;
     margin-right: 80px !important;
     overflow-y: scroll;
-    height: 100vh; 
+    height: calc(100vh - 68px); 
     max-width: 600px !important;
 }

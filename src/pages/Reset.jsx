@@ -126,7 +126,7 @@ function Reset() {
                                         </div>
                                     </form>
                                     <div>
-                                        <p className="mb-0">Remember your password? 
+                                        <p className="mb-0">Remember your password?&nbsp; 
                                             <Link to="/login" className="text-white-50 fw-bold">Login</Link>
                                         </p>
                                     </div>

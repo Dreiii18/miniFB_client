@@ -89,7 +89,7 @@ function UploadSection({ onNewPost }) {
     return (
         <div>
             {/* POPOUT */}
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref={modalRef} data-bs-backdrop="false">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref={modalRef} data-bs-backdrop="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -108,7 +108,7 @@ function UploadSection({ onNewPost }) {
                                 </div>
                             </div>
                             <div>
-                                <input 
+                                <textarea 
                                     type="text" 
                                     className='form-control mt-2 mb-2 border-0' 
                                     placeholder="What's on your mind?"
@@ -149,6 +149,7 @@ function UploadSection({ onNewPost }) {
                                 className="btn btn-primary w-100"
                                 onClick={handleCreatePost}
                                 disabled={isPosting}
+                                data-bs-dismiss="modal"
                             >{isPosting ? 'Posting...' : 'Post'}</button>
                         </div>
                     </div>

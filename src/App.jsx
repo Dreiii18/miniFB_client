@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
 
 import Home from './pages/Home';
@@ -6,18 +6,24 @@ import Login from './pages/Login'
 import Register from './pages/Register';
 import Reset from './pages/Reset';
 
-function App() {
+function PrivateRoute({ children }) {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
+    return isLoggedIn ? children : <Navigate to='/login' />;
+}
 
+function App() {
     return (
         <>
             <Router>
                 <Routes>
                     <Route 
                         path='/'
-                        element={isLoggedIn ? <Home /> : <Login />}
+                        element={
+                            <PrivateRoute>
+                                <Home />
+                            </PrivateRoute>
+                        }
                     />
-                    <Route path='/home' element={<Home />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/reset' element={<Reset />} />

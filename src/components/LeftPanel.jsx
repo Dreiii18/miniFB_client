@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ImageLayout from './ImageLayout'
-import "./LeftPanel.css"
 import groups from '../../images/groups.png'
 import messenger from '../../images/messenger.png'
 
@@ -13,7 +12,7 @@ function LeftPanel() {
             const newData = [
                 {
                     "image": account.profilePicture,
-                    "text": "Andrei Artap",
+                    "text": account.username,
                 },
                 {
                     "image": groups,

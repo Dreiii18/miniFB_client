@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './PostContainer.css'
 import { Paper, Avatar } from '@mui/material'   
 import like from '../../images/like.png'
@@ -14,6 +14,11 @@ function Post(props) {
     const [likeCount, setLikeCount] = useState(props.object.like);
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState(props.object.comments || []);
+    const inputRef = useRef(null);
+
+    function handleCommentButtonClick() {
+        inputRef.current.focus();
+    }
 
     async function handleLike() {
         try {
@@ -129,34 +134,20 @@ function Post(props) {
                 </div>
 
                 {/* LIKE AND SHARE BOX */}
-                <div className='post_likeShare'>
-                    <div className='post_tab' onClick={handleLike}>
-                        <div className='post_tabFirst'>
-                            <img 
-                                src={likeButton} 
-                                className='post_tabImg'
-                            />
-                        </div>
-                        <div className={`post_tabText ${liked ? 'liked' : ''}`}>
-                            Like
-                        </div>
-                    </div>
-                    <div className='post_tab'>
-                        <div className='post_tabFirst'>
-                            <img src={commentButton} className='post_tabImg' />
-                        </div>
-                        <div className='post_tabText'>
-                            Comment
-                        </div>
-                    </div>
-                    <div className='post_tab'>
-                        <div className='post_tabFirst'>
-                            <img src={shareButton} className='post_tabImg' />
-                        </div>
-                        <div className='post_tabText'>
-                            Share
-                        </div>
-                    </div>
+                <div className='d-flex justify-content-evenly pt-2 pb-2'>
+                    <button className='btn px-5 d-flex hover align-items-center' onClick={handleLike}>
+                        <img src={likeButton} className='post_tabImg'/>
+                        <div className={`${liked ? 'liked' : ''}`}>Like</div>
+                    </button>
+                    <button className='btn px-5 d-flex hover align-items-center' onClick={handleCommentButtonClick}>
+                        <img src={commentButton} className='post_tabImg' />
+                        <div>Comment</div>
+                        
+                    </button>
+                    <button className='btn px-5 d-flex hover align-ietems-center'>
+                        <img src={shareButton} className='post_tabImg' />
+                        <div>Share</div>
+                    </button>
                 </div>
 
                 {/* COMMENT AREA */}
@@ -166,13 +157,14 @@ function Post(props) {
                             <Avatar className='upload_img' src={account.profilePicture}/>
                         </div>
                         <div>
-                            <input 
+                            <textarea 
                                 type="text" 
                                 className='upload_box' 
                                 placeholder="Write a comment"
                                 value={commentText}
                                 onChange={handleCommentChange}
                                 onKeyDown={handleCommentSubmit}
+                                ref={inputRef}
                             />
                         </div>
                     </div>
@@ -182,17 +174,19 @@ function Post(props) {
                         {comments?.length > 0 ? (
                             comments.map(comment => (
                                 <div key={comment._id} className="comment">
-                                    <Avatar className='comment_avatar' src={account.profilePicture}/>
-                                    <div className="comment_content p-2">
-                                        <strong>{comment.username}</strong>
-                                        <p>{comment.text}</p>
+                                    <Avatar className='comment_avatar'/>
+                                    <div className='comments d-flex justify-content-between'>
+                                        <div className="comment_content p-2">
+                                            <strong>{comment.username}</strong>
+                                            <p>{comment.text}</p>
+                                        </div>
+                                        {comment.user === account.userId && (
+                                            <button 
+                                                className='btn btn-link text-end'
+                                                onClick={() => handleRemoveComment(comment._id)}
+                                            >X</button>
+                                        )}
                                     </div>
-                                    {comment.user === account.userId && (
-                                        <button 
-                                            className='btn btn-danger'
-                                            onClick={() => handleRemoveComment(comment._id)}
-                                        >Remove</button>
-                                    )}
                                 </div>
                             ))
                         ) : (

@@ -30,7 +30,7 @@ function Login() {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('authToken', token);
             setInvalidLogin(false);
-            navigate('/home');
+            navigate('/');
         } catch (error) {
             console.error('Login Failed: ', error);
             setInvalidLogin(true);
@@ -47,7 +47,7 @@ function Login() {
                                 <div className="card-body p-5 text-center">
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-md-5 mt-md-4 pb-5">
-                                            <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+                                            <h2 className="fw-bold mb-2 text-uppercase mb-5">Login</h2>
                                             <p className="text-white-50 mb-5">Please enter your username and password!</p>
                                             {invalidLogin && (
                                                 <p id="invalid" style={{display: invalidLogin ? 'block' : 'none'}}>Invalid username or password</p>
@@ -77,20 +77,20 @@ function Login() {
                                                 />
                                                 <label className="form-label" htmlFor="typePasswordX">Password</label>
                                             </div>
-                                            <p className="small mb-5 pb-lg-2">
-                                                <Link to="/reset" className="text-white-50">Forgot password?</Link>
-                                            </p>
 
                                             <button 
                                                 data-mdb-button-init 
                                                 data-mdb-ripple-init 
-                                                className="btn btn-outline-light btn-lg px-5" 
+                                                className="btn btn-outline-light btn-lg px-5 mt-4" 
                                                 type="submit"
                                             >Login</button>
+                                            <p className="small mb-5 pb-lg-2">
+                                                <Link to="/reset" className="text-white-50">Forgot password?</Link>
+                                            </p>
                                         </div>
                                     </form>
                                     <div>
-                                        <p className="mb-0">Don't have an account?
+                                        <p className="mb-0">Don&apos;t have an account?&nbsp;
                                             <Link to='/register' className="text-white-50 fw-bold">Sign Up</Link>
                                         </p>
                                     </div>

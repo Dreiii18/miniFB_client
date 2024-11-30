@@ -21,8 +21,8 @@
 
 .post_description {
     display: flex;
-    margin-left: 15px;
-    margin-top: 10px;
+    padding: 15px;
+    padding-bottom: 0px;
 }
 
 .post_image {
@@ -44,37 +44,19 @@
     margin-left: 5px;
 }
 
-.post_likeShare {
-    display: flex;
-    height: 50px;
-    margin-left: 100px;
-    margin-top: 10px;
-}
-
-.post_tab {
-    display: flex;
-    width: 200px;
-}
-
 .post_tabImg {
     width: 30px;
-}
-
-.post_tabText {
-    margin: 5px;
+    margin-right: 8px;
+    mix-blend-mode: multiply;
 }
 
 .post_comment {
     border-top: 1px solid #CDD0D4;
 }
 
-.post_tabText.liked {
+.liked {
     color: blue;
     font-weight: bold;
-}
-
-.post_tab:hover {
-    cursor: grab;
 }
 
 .comments_list {
@@ -98,8 +80,6 @@
     display: flex;
     flex-direction: column; 
     justify-content: flex-start;
-    background-color: #eff2f5;
-    border-radius: 10px;
 }
 
 .comment_content strong {
@@ -110,4 +90,19 @@
 .comment_content p {
     margin: 0;
     font-size: 14px;
+}
+
+.comments {
+    background-color: #eff2f5;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.btn-link {
+    color: black !important;
+    text-decoration: none;
+}
+
+.hover:hover {
+    background-color: #CDD0D4 !important;
 }

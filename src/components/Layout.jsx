@@ -51,7 +51,7 @@ function Layout() {
 
     return (
         <div className='mainpage_container'>
-            <Grid container sx={{ height: '100vh' }}>
+            <Grid container>
                 <Grid size="grow" className="leftContainer">
                     <LeftPanel />
                 </Grid>
